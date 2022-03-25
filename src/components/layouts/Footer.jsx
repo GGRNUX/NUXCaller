@@ -1,34 +1,30 @@
-
 import { makeStyles } from "@material-ui/styles";
-import {Container, Grid, Typography, Button } from "@material-ui/core";
+import { Container, Grid, Typography, Button } from "@material-ui/core";
 import { routes } from "../../data/routes";
 import Social from "../Social";
-import logo from "../../assets/img/nux.webp"
-const lightgray = "#696969";
+import logo from "../../assets/img/NUXWAY.png"
+const black = "#000000";
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    fontFamily:"Roboto",
-    backgroundColor: lightgray,
+    fontFamily: "Roboto",
+    backgroundColor: black,
     width: `100%`,
-    bottom:"0",
-    overflow: "auto", 
+    bottom: "0",
+    overflow: "auto",
     padding: "2em",
-     
-   
-    position: "absolute",
-    
+
   },
   link: {
-    fontFamily:"Roboto",
+    fontFamily: "Roboto",
     fontSize: "1.25em",
     color: "#fff",
     "&:hover": {
       color: "#0079C1",
     },
   },
-  text: { 
-    fontFamily:"Roboto",
+  text: {
+    fontFamily: "Roboto",
     color: 'black',
     margin: 20,
   },
@@ -47,59 +43,57 @@ const Footer = () => {
   return (
     <div className={classes.footer}>
       <div>
-      <Container>
-      <Grid container spacing={4} direction="row" justify="space-between" alignItems="flex-start"> 
-        <Grid item direction="column" justify="flex-start" alignItems="flex-start" xs={12} sm={4}>
-        <Button variant="text" onClick={() => {window.location.assign('/')}}>
-        <img src={logo} alt="logo" className={classes.logo}  style={{width:'70%', height:'70%'}} />
-          </Button>
-        </Grid>
-        <Grid item direction="column" justify="flex-start" alignItems="flex-end" xs={12} sm={4}>
         <Container>
-            <Typography variant='body2' style={{margin: 'auto', color:'white'}} align="left"> 
-             EMPRESA LIDER EN TELECOMUNICACIONES
+          <Grid container spacing={4} direction="row" justify="space-between" alignItems="flex-start">
+            <Grid item direction="column" justify="flex-start" alignItems="flex-start" xs={12} sm={4}>
+            <Grid container spacing={3} justify="center">
+            {path.map(({ name, link }) => (
+              <Grid item key={link} />))
+            }
+          </Grid>
+          <Grid container direction="column" style={{ margin: "1.2em 0" }}>
+            <Social />
+          </Grid>
+          <Grid
+            item
+            container
+            component={"a"}
+            target="_blank"
+            rel="noreferrer noopener"
+            href="https://www.nuxway.net/"
+            justify="center"
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            <Typography variant='caption' className={classes.copylight}>
+              &copy;Nuxway Technology
             </Typography>
-          </Container>
-        </Grid>
-        <Grid item direction="column" justify="flex-start" alignItems="flex-end" xs={12} sm={4}>
-          <Container maxWidth='lg'>
-            <Typography  variant='h3'  style={{margin: 'auto', color: 'white'}} align="left" >Dirección:</Typography>
-            <Typography variant='body2' style={{marginBottom: '20px', color:'white'}} align="left">Calle Las Jarkas #204</Typography>
-          </Container>
-          <Container maxWidth='lg'>
-            <Typography  variant='h3' style={{margin: 'auto', color: 'white'}} align="left" >Telefonos:</Typography>
-            <Typography variant='body2' style={{margin: 'auto', color:'white'}} align="left">4483862 - 4225892 - 70770144</Typography>
-          </Container> 
-      </Grid>
-    </Grid>          
-    </Container>
-    
-      <Container maxWidth="lg">
-        <Grid container spacing={3} justify="center">
-          {path.map(({ name, link }) => (
-            <Grid item key={link}/>))
-          }
-        </Grid>
-        <Grid container direction="column" style={{ margin: "1.2em 0" }}>
-          <Social/>
-        </Grid>
-        <Grid
-          item
-          container
-          component={"a"}
-          target="_blank"
-          rel="noreferrer noopener"
-          href="https://www.nuxway.net/"
-          justify="center"
-          style={{
-            textDecoration: "none",
-          }}
-        >
-          <Typography variant='caption' className={classes.copylight}>
-            &copy;Nuxway Technology
-          </Typography>
-        </Grid>
-      </Container>
+          </Grid>
+            </Grid>
+            <Grid item direction="column" justify="flex-start" alignItems="flex-end" xs={12} sm={4}>
+              <Container justify="flex-start">
+                <Typography variant='body2' style={{ display: 'inline-block', color: 'white' }}>EMPRESA LIDER EN </Typography>
+                <Typography variant='h5' style={{ display: 'inline-block', color: 'orange' }}>&nbsp;TELECOMUNICACIONES</Typography>
+                <Button variant="text" onClick={() => { window.location.assign('/') }}>
+                <img src={logo} alt="logo" className={classes.logo} style={{ width: '70%', height: '70%' }} />
+              </Button>
+              </Container>
+            </Grid>
+            <Grid item direction="column" justify="flex-start" alignItems="flex-end" xs={12} sm={4}>
+              <Container maxWidth='lg'>
+                <Typography variant='h3' style={{ margin: 'auto', color: 'white' }} align="left" >Dirección:</Typography>
+                <Typography variant='body2' style={{ marginBottom: '20px', color: 'white' }} align="left">Calle Las Jarkas #204</Typography>
+              </Container>
+              <Container maxWidth='lg'>
+                <Typography variant='h3' style={{ margin: 'auto', color: 'white' }} align="left" >Telefonos:</Typography>
+                <Typography variant='body2' style={{ margin: 'auto', color: 'white' }} align="left">4483862 - 4225892 - 70770144</Typography>
+              </Container>
+            </Grid>
+          </Grid>
+        </Container>
+
+        
       </div>
     </div>
   );
