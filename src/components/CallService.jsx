@@ -1,16 +1,14 @@
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import '../assets/css/Login.css'
+import '../assets/css/App.css'
 import csv from "csv";
 import axios from 'axios';
 import Footer from '../components/layouts/Footer'
 import Header from "./layouts/Header";
 import theme from "../theme"
 import { ThemeProvider } from '@material-ui/core/styles'
-import { useMediaQuery, Container, Button, Grid, List, ListItemText, Typography, Box } from '@material-ui/core'
+import { useMediaQuery, Container, Button, Grid, List, ListItemText, Typography, TextField,Box } from '@material-ui/core'
 import { v4 as uuidv4 } from 'uuid';
-import logo from "../assets/img/nux.webp"
-
 
 var callers
 var callersLength
@@ -19,6 +17,7 @@ function DragArea() {
   const initialList = []
   const [data, setData] = React.useState([]); //estado de react, forma de almacenamiento autonomo.
   const [list, setList] = React.useState(initialList);
+  const [ivr, setIvr] = useState('6502')
   const onDrop = useCallback(acceptedFiles => {
 
     const reader = new FileReader(); //Se declara una constante de tipo lector de archivos
@@ -52,7 +51,7 @@ function DragArea() {
     const headers = { 'Content-Type': 'application/json' }
     //Declaración del arreglo de llamada, con la estructura adecuada para enviarse como body de la consulta al API.
     const call = {
-      "ivrid": "6502",
+      "ivrid": ivr,
       "outto": "8" + callers[callersLength].toString(),
       "fromext": "1001"
     }
@@ -121,10 +120,14 @@ function DragArea() {
           <input {...getInputProps()} /> {/*Campo para recibir el archivo csv.*/}
           <p>Arrastra aqui el archivo que deseas cargar</p>
         </div>
-
-        <br />
         <br />
         <div>
+          <Box sx={{ mb: 2,ml:3}}>
+          <p>Ingresa el IVR</p>
+          <Grid item xs={3} md={3} >
+          <input style={{width:'94%', margin:'0'}} type="text" className="fadeIn second" name="IVR" placeholder="6052" onChange={event => setIvr(event.target.value)} />
+            </Grid>
+          </Box>
           <Container maxWidth="lg" >
             <Grid container spacing={2} >
               <Grid item xs={3} md={3} ><Button variant="contained" color="success" onClick={prueba} fullWidth>Llamar</Button> </Grid>
@@ -143,7 +146,7 @@ function DragArea() {
                 </List>
               </Grid>
               <Grid item xs={6} md={6}>
-                <p>Numeros cargados:</p>
+                <p>Numeros llamados:</p>
                 <List class="list-group" style={{ maxHeight: '350px', overflow: 'auto' }}>
                   <ul class="list-group">
                     {list.map((item) => (
