@@ -73,8 +73,8 @@ const Footer = () => {
             </Grid>
             <Grid item direction="column" justify="flex-start" alignItems="flex-end" xs={12} sm={4}>
               <Container justify="flex-start">
-                <Typography variant='body2' style={{ display: 'inline-block', color: 'white' }}>EMPRESA LIDER EN </Typography>
-                <Typography variant='h5' style={{ display: 'inline-block', color: 'orange' }}>&nbsp;TELECOMUNICACIONES</Typography>
+                <Typography variant='h3' style={{ display: 'inline-block', color: 'white' }}>LIDER EN </Typography>
+                <Typography variant='h3' style={{ display: 'inline-block', color: 'orange' }}>&nbsp;TELECOMUNICACIONES</Typography>
                 <Button variant="text" onClick={() => { window.location.assign('/') }}>
                 <img src={logo} alt="logo" className={classes.logo} style={{ width: '70%', height: '70%' }} />
               </Button>
@@ -82,11 +82,11 @@ const Footer = () => {
             </Grid>
             <Grid item direction="column" justify="flex-start" alignItems="flex-end" xs={12} sm={4}>
               <Container maxWidth='lg'>
-                <Typography variant='h3' style={{ margin: 'auto', color: 'white' }} align="left" >Dirección:</Typography>
+                <Typography variant='h4' style={{ margin: 'auto', color: 'white' }} align="left" >Dirección:</Typography>
                 <Typography variant='body2' style={{ marginBottom: '20px', color: 'white' }} align="left">Calle Las Jarkas #204</Typography>
               </Container>
               <Container maxWidth='lg'>
-                <Typography variant='h3' style={{ margin: 'auto', color: 'white' }} align="left" >Telefonos:</Typography>
+                <Typography variant='h4' style={{ margin: 'auto', color: 'white' }} align="left" >Telefonos:</Typography>
                 <Typography variant='body2' style={{ margin: 'auto', color: 'white' }} align="left">4483862 - 4225892 - 70770144</Typography>
               </Container>
             </Grid>
