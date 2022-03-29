@@ -1,9 +1,9 @@
 import { makeStyles } from "@material-ui/styles";
 import { Grid } from "@material-ui/core";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import HomeIcon from "@material-ui/icons/Home";
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 // if you wanto to add twitter
 // import TwitterIcon from '@material-ui/icons/Twitter';
 
@@ -50,7 +50,7 @@ const Social = ({ color }) => {
         rel="noreferrer noopener"
         href={homepage}
       >
-        <HomeIcon
+        <HomeRoundedIcon
           className={classes.snsIcon}
           color={color ? "primary" : "secondary"}
         />
@@ -62,7 +62,7 @@ const Social = ({ color }) => {
         rel="noreferrer noopener"
         href={facebook}
       >
-        <FacebookIcon
+        <FacebookRoundedIcon
           className={classes.snsIcon}
           color={color ? "primary" : "secondary"}
         />
@@ -74,7 +74,7 @@ const Social = ({ color }) => {
         rel="noreferrer noopener"
         href={instagram}
       >
-        <InstagramIcon
+        <YouTubeIcon
           className={classes.snsIcon}
           color={color ? "primary" : "secondary"}
         />
@@ -86,7 +86,7 @@ const Social = ({ color }) => {
         rel="noreferrer noopener"
         href={github}
       >
-        <GitHubIcon
+        <LinkedInIcon
           className={classes.snsIcon}
           color={color ? "primary" : "secondary"}
         />
