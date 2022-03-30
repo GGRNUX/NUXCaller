@@ -2,8 +2,7 @@ import React from 'react';
 import '../assets/css/Login.css'
 import Logo from '../assets/img/nux.webp'
 import axios from 'axios';
-//import md5 from 'md5';
-
+import md5 from 'md5';
 class Login extends React.Component{
 
     constructor(props){super(props);} //Constructor, recibe las propiedades necesarias para construir el componente con ellas.
@@ -34,23 +33,15 @@ class Login extends React.Component{
     }
     
     buttonHandler=()=>{
-        /*console.log(this.state.form.password);
-        let encodedVal = md5(this.state.form.password);  
-        this.setState ({form:{
-            password:encodedVal,
-        }
-        })
-        console.log(this.state.form.password);*/
-
-
         let url = '/login'; // Declara la varaible url, con el path que nos sugiere la documentación de API's de YEASTAR
         const headers = {'Content-Type': 'application/json'}
         //Inicio de la consulta LOGIN al API LOGIN de YEASTAR
+        this.state.form.password=md5(this.state.form.password)
           axios.post(url, this.state.form,{headers: headers}) //Llamada a consulta POST
         .then(response=>{console.log(response.data.status);//.then significa que cuando llegue la respueat se ejecuta lo que esta dentro del then
             if(response.data.status === "Success") //Se evalua si el estatus de respuiesta del API es correcto o erroneo
             {
-                localStorage.setItem("token", response.data.token) //guardamos la variable de forma global para todo el servicio web
+                sessionStorage.setItem("token", response.data.token) //guardamos la variable de forma global para todo el servicio web
                 this.props.history.push("/callService"); //automaticamente se inicia el componente asociado a /callService
             }else
             {
