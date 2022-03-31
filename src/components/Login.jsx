@@ -3,6 +3,7 @@ import '../assets/css/Login.css'
 import Logo from '../assets/img/nux.webp'
 import axios from 'axios';
 import md5 from 'md5';
+
 class Login extends React.Component{
 
     constructor(props){super(props);} //Constructor, recibe las propiedades necesarias para construir el componente con ellas.
@@ -84,12 +85,7 @@ class Login extends React.Component{
                                 <input type="submit" className="fadeIn fourth" value="Iniciar Sesión" onClick={this.buttonHandler}/>
                             </form>
 
-                           {this.state.error === true &&
-                            <div className="alert alert-danger" role="alert">
-                                {this.state.errorMSg}
-                            </div>
-
-                           }
+                           
                             
                     </div>
                 </div> 
