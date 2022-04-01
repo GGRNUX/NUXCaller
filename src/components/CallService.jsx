@@ -90,7 +90,7 @@ function DragArea() {
         console.log("inLoop");
         callLoop(); //la función se llama de forma recursiva, esto significa que de nuevo iniciara su ejecución       
       }
-    }, 40000)
+    }, 60000)
 
   }
   function prueba() {
@@ -125,7 +125,7 @@ function DragArea() {
           <Box sx={{ mb: 2,ml:3}}>
           <p>Ingresa el IVR</p>
           <Grid item xs={3} md={3} >
-          <input style={{width:'94%', margin:'0'}} type="text" className="fadeIn second" name="IVR" placeholder="6052" onChange={event => setIvr(event.target.value)} />
+          <input style={{width:'94%', margin:'0'}} type="text" className="fadeIn second" name="IVR" placeholder="6502" onChange={event => setIvr(event.target.value)} />
             </Grid>
           </Box>
           <Container maxWidth="lg" >
