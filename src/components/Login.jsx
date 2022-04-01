@@ -3,7 +3,7 @@ import '../assets/css/Login.css'
 import Logo from '../assets/img/nux.webp'
 import axios from 'axios';
 import md5 from 'md5';
-
+import { Alert,AlertTitle } from '@material-ui/core';
 class Login extends React.Component{
 
     constructor(props){super(props);} //Constructor, recibe las propiedades necesarias para construir el componente con ellas.
@@ -48,14 +48,13 @@ class Login extends React.Component{
             {
                 this.setState({
                     error: true, 
-                    errorMsg: response.data.result.error_msg
+                    errorMsg: "La constraseña o usuario son incorrectos"
                 })
             }
         }).catch( error =>{
-            console.log(error);
             this.setState({
                 error: true,
-                errorMsg:"error al conectar con el API"
+                errorMsg:"Error al conectar con el API"
             })
         })
     }
@@ -84,9 +83,11 @@ class Login extends React.Component{
                               {/*onClick es una propiedad que detecta cuando un boton es apretado y dispara una acción.*/}
                                 <input type="submit" className="fadeIn fourth" value="Iniciar Sesión" onClick={this.buttonHandler}/>
                             </form>
-
-                           
-                            
+                        {this.state.error ?
+                            <Alert severity="error">
+                                <AlertTitle>{this.state.errorMsg}</AlertTitle>
+                            </Alert>
+                            : <></>}
                     </div>
                 </div> 
 
