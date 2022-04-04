@@ -18,6 +18,7 @@ function DragArea() {
   const initialList = []
   const [data, setData] = React.useState([]); //estado de react, forma de almacenamiento autonomo.
   const [list, setList] = React.useState(initialList);
+  
   const onDrop = useCallback(acceptedFiles => {
 
     const reader = new FileReader(); //Se declara una constante de tipo lector de archivos

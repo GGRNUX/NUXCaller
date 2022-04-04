@@ -4,7 +4,6 @@ html{
   body {
     font-family: "Roboto", sans-serif;
     height: 100vh;
-    background-color: #F79F3B;
     
   }
   
@@ -36,7 +35,7 @@ html{
     justify-content: center;
     width: 100%;
     min-height: 100%;
-    padding: 170px;
+    padding: 231px;
   }
   
   #formContent {
@@ -182,6 +181,7 @@ html{
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
+    
   }
   
   @-webkit-keyframes fadeInDown {

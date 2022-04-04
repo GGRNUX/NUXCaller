@@ -4,8 +4,10 @@ import Logo from '../assets/img/nux.webp'
 import axios from 'axios';
 import md5 from 'md5';
 
+
 class Login extends React.Component{
 
+    
     constructor(props){super(props);} //Constructor, recibe las propiedades necesarias para construir el componente con ellas.
 
     state={form:{
@@ -63,9 +65,9 @@ class Login extends React.Component{
     //Renderizacion de la pagina, parte visual.
     render(){
         return(
-            <React.Fragment>
+            <React.Fragment >
 
-                <div className="wrapper fadeInDown">
+                <div className="wrapper fadeInDown" style={{background: "#F79F3B"}} >
 
                     <div id="formContent">
                          
