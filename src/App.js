@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Login from './components/Login';
 import CallService from './components/CallService';
+import Dashboard from './components/Dashboard';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route path="/" exact render ={ props=> ( <Login {...props} />)}></Route>
           <Route path="/callService" exact render ={ props=> ( <CallService {...props} />)}></Route>
+          <Route path="/dashboard" exact render ={ props=> ( <Dashboard  />)}></Route>
         </Switch>
         </Suspense>
       </Router>

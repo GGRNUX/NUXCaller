@@ -4,8 +4,6 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-
-
 import { socialMedia } from "../data/socialMedia";
 
 const useStyles = makeStyles((theme) => ({
