@@ -111,7 +111,7 @@ function DragArea() {
       <Container maxWidth="lg">
         <div className="fileDrop" {...getRootProps()}>
           <input {...getInputProps()} /> {/*Campo para recibir el archivo csv.*/}
-          <p>Arrastra aqui el archivo que deseas cargar</p>
+          <p>Arrastra el archivo CSV o haga click para subir un archivo</p>
         </div>
 
         <br />
