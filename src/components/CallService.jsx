@@ -106,25 +106,27 @@ function DragArea() {
   //Parte visual del componente 
   const isMatch = useMediaQuery(theme.breakpoints.down('lg'));
   return (
+    
     <ThemeProvider theme={theme}>
+     
       <Header></Header>
-      <Container maxWidth="lg">
+      <Container>
         <div className="fileDrop" {...getRootProps()}>
           <input {...getInputProps()} /> {/*Campo para recibir el archivo csv.*/}
-          <p>Arrastra el archivo CSV o haga click para subir un archivo</p>
+          <>Arrastra el archivo CSV o hacer click para subirlo</>
         </div>
 
         <br />
         <br />
         <div>
-          <Container maxWidth="lg" >
+          <Container >
             <Grid container spacing={2} >
               <Grid item xs={3} md={3} ><Button variant="contained" color="success" onClick={llamar} fullWidth>Llamar</Button> </Grid>
-              <Grid item xs={3} md={3}><Button variant="contained" color="error" onClick={cancelar} fullWidth>Cancelar</Button> </Grid>
-              <Grid item xs={3} md={3}><Button variant="contained" color="secondary" onClick={pausar} fullWidth>Pausar</Button> </Grid>
-              <Grid item xs={3} md={3}><Button variant="contained" onClick={continuar} fullWidth>Continuar</Button> </Grid>
+              <Grid item xs={3} md={3}><Button variant="contained" style={{background:'#B85252'}}  onClick={cancelar} fullWidth>Cancelar</Button> </Grid>
+              <Grid item xs={3} md={3}><Button variant="contained" style={{background:'#EADEDE', color:'black'}} onClick={pausar} fullWidth>Pausar</Button> </Grid>
+              <Grid item xs={3} md={3}><Button variant="contained" style={{background:'#10316B'}} onClick={continuar} fullWidth>Continuar</Button> </Grid>
             </Grid>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} style={{marginTop:'30px'}}>
               <Grid item xs={6} md={6}>
                 <p>Numeros cargados:</p>
                 <List class="list-group" style={{ maxHeight: '350px', overflow: 'auto' }}>
@@ -154,7 +156,9 @@ function DragArea() {
       </Container>
 
       <Footer />
+      
     </ThemeProvider>
+    
   );
 
 }

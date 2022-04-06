@@ -3,15 +3,18 @@ import logo from "../../assets/img/NUXWAY-WF.png"
 const Header = () => {
     return (
         <Box  sx={{
-            backgroundColor: 'orange',
-            mb:2}
-          }>
-        <Grid container spacing={2} >
-              <Grid item xs={3} md={3} > <Button variant="text" onClick={() => { window.location.assign('/') }}>
-        <img src={logo} alt="logo"  style={{ width: '40%', height: '40%' }} />
-        </Button> </Grid>
-              <Grid item xs={6} md={6}><Typography variant="h1"  align="center">NUX Caller</Typography></Grid>
-            </Grid>
+              backgroundColor: '#F79F3B',
+              height:'105px',
+              mb:8}
+            }>
+          <Grid container spacing={2} >
+                  <Grid item xs={3} md={3} > 
+                    <Button variant="text" onClick={() => { window.location.assign('/') }}>
+                      <img src={logo} alt="logo"  style={{marginTop:'7px', width: '43%', height: '43%' }} />
+                    </Button> 
+                  </Grid>
+                  <Grid  item xs={6} md={6}><Typography style={{marginTop:'25px'}} variant="h1"  align="center">NUX CALLER</Typography></Grid>
+          </Grid>
         </Box>
     );
   };

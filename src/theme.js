@@ -4,6 +4,7 @@ const blue = "#0079C1";
 const mainBlack = "#212121";
 const mainWhite = "#fafafa";
 const theme = createMuiTheme({
+  
   palette: {
     common: {
       black: mainBlack,

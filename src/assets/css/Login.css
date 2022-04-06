@@ -1,11 +1,16 @@
-html{
-  position: relative;
-}
+
   body {
     font-family: "Roboto", sans-serif;
-    height: 100vh;
-    background-color: #F79F3B;
     
+   /* background-color: #F79F3B;*/
+
+  /*margin:0;
+   padding:0;
+   display: 'flex';
+   min-height:'100vh';
+   flex-wrap: wrap;*/
+
+   /*border: 10px solid red;*/
   }
   
   a {
