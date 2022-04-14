@@ -7,9 +7,9 @@ import Footer from '../components/layouts/Footer'
 import Header from "./layouts/Header";
 import theme from "../theme"
 import { ThemeProvider } from '@material-ui/core/styles'
-import { useMediaQuery, Container, Button, Grid, List, ListItemText, Typography } from '@material-ui/core'
+import { useMediaQuery, Container, Button, Grid, List, ListItemText, Typography, TextField } from '@material-ui/core'
 import { v4 as uuidv4 } from 'uuid';
-
+import DownloadComponent from "./DownloadService";
 
 var callers
 var callersLength
@@ -51,9 +51,6 @@ function DragArea() {
       "outto": "8" + callers[callersLength].toString(),
       "fromext": "1001"
     }
-
-    console.log(call);
-
     //Consulta POST al API, se le envia el url al cual mandar la consulta y el body de la consulta.
     axios.post(url, call, {
       headers: headers
@@ -103,6 +100,7 @@ function DragArea() {
     stop = false
     callLoop()
   }
+  
   //Parte visual del componente 
   const isMatch = useMediaQuery(theme.breakpoints.down('lg'));
   return (
@@ -119,6 +117,7 @@ function DragArea() {
         <div>
           <Container maxWidth="lg" >
             <Grid container spacing={2} >
+              <DownloadComponent></DownloadComponent>
               <Grid item xs={3} md={3} ><Button variant="contained" color="success" onClick={llamar} fullWidth>Llamar</Button> </Grid>
               <Grid item xs={3} md={3}><Button variant="contained" color="error" onClick={cancelar} fullWidth>Cancelar</Button> </Grid>
               <Grid item xs={3} md={3}><Button variant="contained" color="secondary" onClick={pausar} fullWidth>Pausar</Button> </Grid>
