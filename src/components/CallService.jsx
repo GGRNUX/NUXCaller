@@ -7,9 +7,9 @@ import Footer from '../components/layouts/Footer'
 import Header from "./layouts/Header";
 import theme from "../theme"
 import { ThemeProvider } from '@material-ui/core/styles'
-import { useMediaQuery, Container, Button, Grid, List, ListItemText, Typography } from '@material-ui/core'
+import { useMediaQuery, Container, Button, Grid, List, ListItemText, Typography,Box } from '@material-ui/core'
 import { v4 as uuidv4 } from 'uuid';
-
+import DownloadComponent from "./DownloadService";
 
 var callers=[]
 var callersLength = []
@@ -18,6 +18,7 @@ var iterator
 function DragArea() {
   const [data, setData] = React.useState([]); //estado de react, forma de almacenamiento autonomo.
   const [list, setList] = React.useState([]);
+  const [ivr, setIvr] = React.useState('6502')
   const [callersIterator, setIterator] = React.useState(0);
   const onDrop = useCallback(acceptedFiles => {
     const reader = new FileReader(); //Se declara una constante de tipo lector de archivos
@@ -45,7 +46,7 @@ function DragArea() {
     const headers = { 'Content-Type': 'application/json' }
     //Declaración del arreglo de llamada, con la estructura adecuada para enviarse como body de la consulta al API.
     const call = {
-      "ivrid": "6502",
+      "ivrid": ivr,
       "outto": "8" + callers[iterator].toString(),
       "fromext": "1001"
     }
@@ -120,13 +121,24 @@ function DragArea() {
         <br />
         <br />
         <div>
+        <Box sx={{ mb: 2,ml:3}}>
+          <p>Ingresa el IVR</p>
+          <Grid item xs={3} md={3} >
+          <input style={{width:'94%', margin:'0'}} type="text" className="fadeIn second" name="IVR" placeholder="6502" onChange={event => setIvr(event.target.value)} />
+            </Grid>
+          </Box>
           <Container maxWidth="lg" >
+            <Grid>
+            <DownloadComponent></DownloadComponent>
+            </Grid>
+            <Box sx={{ mt: 2}}>
             <Grid container spacing={2} >
               <Grid item xs={3} md={3} ><Button variant="contained" color="success" onClick={llamar} fullWidth>Llamar</Button> </Grid>
               <Grid item xs={3} md={3}><Button variant="contained" color="error" onClick={cancelar} fullWidth>Cancelar</Button> </Grid>
               <Grid item xs={3} md={3}><Button variant="contained" color="secondary" onClick={pausar} fullWidth>Pausar</Button> </Grid>
               <Grid item xs={3} md={3}><Button variant="contained" onClick={continuar} fullWidth>Continuar</Button> </Grid>
             </Grid>
+            </Box>
             <Grid container spacing={2}>
               <Grid item xs={6} md={6}>
                 <p>Numeros cargados: {callers.length}</p>
