@@ -91,7 +91,10 @@ function DragArea() {
     callersLength = callers.length - 1
     setIterator(0)
     iterator=0
-    callLoop()
+    if(callers.length!==0)
+      {
+        callLoop()
+      }
   }
   function cancelar() {
     stop = true
@@ -106,7 +109,11 @@ function DragArea() {
   }
   function continuar() {
     stop = false
-    callLoop()
+    if(callers.length!==0)
+    {
+      callLoop()
+    }
+    
   }
   //Parte visual del componente 
   const isMatch = useMediaQuery(theme.breakpoints.down('lg'));
