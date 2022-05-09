@@ -25,7 +25,6 @@ function DragArea() {
     reader.onabort = () => console.log("file reading was aborted");
     reader.onerror = () => console.log("file reading failed");
     reader.onload = () => {
-      // Parse CSV file
       csv.parse(reader.result, (err, data) => {
         sessionStorage.setItem("nums", data) //Se guarda en la sesion el archivo cargado.
         console.log("Parsed CSV data: ", data.length); //Imprime en consola el tamaño del array de numeros parseados
@@ -50,8 +49,6 @@ function DragArea() {
       "outto": "8" + callers[iterator].toString(),
       "fromext": "1001"
     }
-
-    console.log(call);
 
     //Consulta POST al API, se le envia el url al cual mandar la consulta y el body de la consulta.
     axios.post(url, call, {
@@ -86,7 +83,7 @@ function DragArea() {
     }, 40000)
 
   }
-  function llamar() {
+  function calls() {
     stop = false
     callersLength = callers.length - 1
     setIterator(0)
@@ -96,7 +93,7 @@ function DragArea() {
         callLoop()
       }
   }
-  function cancelar() {
+  function cancelCalls() {
     stop = true
     callers = []
     setData([])
@@ -104,18 +101,16 @@ function DragArea() {
     setIterator(0)
     iterator=0
   }
-  function pausar() {
+  function pauseCalls() {
     stop = true
   }
-  function continuar() {
+  function continueCalls() {
     stop = false
     if(callers.length!==0)
     {
       callLoop()
     }
-    
   }
-  //Parte visual del componente 
   const isMatch = useMediaQuery(theme.breakpoints.down('lg'));
   return (
     <ThemeProvider theme={theme}>
@@ -140,10 +135,10 @@ function DragArea() {
             </Grid>
             <Box sx={{ mt: 2}}>
             <Grid container spacing={2} >
-              <Grid item xs={3} md={3} ><Button variant="contained" color="success" onClick={llamar} fullWidth>Llamar</Button> </Grid>
-              <Grid item xs={3} md={3}><Button variant="contained" color="error" onClick={cancelar} fullWidth>Cancelar</Button> </Grid>
-              <Grid item xs={3} md={3}><Button variant="contained" color="secondary" onClick={pausar} fullWidth>Pausar</Button> </Grid>
-              <Grid item xs={3} md={3}><Button variant="contained" onClick={continuar} fullWidth>Continuar</Button> </Grid>
+              <Grid item xs={3} md={3} ><Button variant="contained" color="success" onClick={calls} fullWidth>Llamar</Button> </Grid>
+              <Grid item xs={3} md={3}><Button variant="contained" color="error" onClick={cancelCalls} fullWidth>Cancelar</Button> </Grid>
+              <Grid item xs={3} md={3}><Button variant="contained" color="secondary" onClick={pauseCalls} fullWidth>Pausar</Button> </Grid>
+              <Grid item xs={3} md={3}><Button variant="contained" onClick={continueCalls} fullWidth>Continuar</Button> </Grid>
             </Grid>
             </Box>
             <Grid container spacing={2}>
@@ -166,15 +161,9 @@ function DragArea() {
                 </List>
               </Grid>
             </Grid>
-
-
           </Container>
-
         </div>
-
-
       </Container>
-
       <Footer />
     </ThemeProvider>
   );
