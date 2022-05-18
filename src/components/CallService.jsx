@@ -126,7 +126,7 @@ function DragArea() {
         <Box sx={{ mb: 2,ml:3}}>
           <p>Ingresa el IVR</p>
           <Grid item xs={3} md={3} >
-          <input style={{width:'94%', margin:'0'}} type="text" className="fadeIn second" name="IVR" placeholder="6502" onChange={event => setIvr(event.target.value)} />
+          <input id="ivr" style={{width:'94%', margin:'0'}} type="text" className="fadeIn second" name="IVR" value={ivr} onChange={event => setIvr(event.target.value)} />
             </Grid>
           </Box>
           <Container maxWidth="lg" >

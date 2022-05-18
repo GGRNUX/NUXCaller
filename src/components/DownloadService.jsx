@@ -7,6 +7,45 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 function DownloadComponent() {
   const [beginDate, setBeginDate] = React.useState(new Date());
   const [endDate, setEndDate] = React.useState(new Date());
+  const [array, setArray] = React.useState([]);
+  const [uncalled,setUncalled]=React.useState([]);
+  const csvFileToArray = string => {
+		console.log(string)
+		const csvHeader = string.slice(0, string.indexOf("\n")).split(",");
+		const csvRows = string.split("\n");
+		const array = csvRows.map(i => {
+			const values = i.split(",");
+			const obj = csvHeader.reduce((object, header, index) => {
+				object[header] = values[index];
+				return object;
+			}, {});
+			return obj;
+		});
+		setArray(array);
+	};
+  function uncalledNumbers()
+  {
+    var uncalledArray = "";
+    const ivr = document.getElementById('ivr').value;
+    array.forEach( i=> {
+        if(i["status"]==="NO ANSWER" &&i["callfrom"]===ivr)
+        {
+          uncalledArray=uncalledArray.concat((i["callto"]).substring(1),',\n')
+        }
+    });
+     setUncalled(uncalledArray)
+     exportCsv([uncalledArray],"noAnswer")
+  }
+  function exportCsv(data,fileName){
+    console.log(data)
+    const urlD = window.URL.createObjectURL(new Blob(data));
+    const link = document.createElement('a');
+    link.href = urlD;
+    link.setAttribute('download', fileName+'.csv');
+    document.body.appendChild(link);
+    link.click();
+
+  }
   function downloadCsv() {
     const begin = formatDate(beginDate)
     const end = formatDate(endDate)
@@ -24,12 +63,9 @@ function DownloadComponent() {
             .then(response => {
               console.log(response)
               if (response.data.status !== "Failed") {
-                const urlD = window.URL.createObjectURL(new Blob([response.data]));
-                const link = document.createElement('a');
-                link.href = urlD;
-                link.setAttribute('download', 'cdr.csv');
-                document.body.appendChild(link);
-                link.click();
+                csvFileToArray(response.data)
+                uncalledNumbers()
+                exportCsv([response.data],"cdrReport")
               }
               else {
                 console.log("falla")
