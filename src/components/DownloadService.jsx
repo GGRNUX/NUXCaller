@@ -4,13 +4,14 @@ import { Button, Grid, TextField } from '@material-ui/core'
 import DateTimePicker from '@mui/lab/DateTimePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import SmsService from "./SmsService";
 function DownloadComponent() {
+  const message="Estimado paciente, recordarle que tiene una cita en los la clinica Los Olivos el dia de mañana, si quiere reprogramar su cita por favor comunicarse al numero ..."
   const [beginDate, setBeginDate] = React.useState(new Date());
   const [endDate, setEndDate] = React.useState(new Date());
   const [array, setArray] = React.useState([]);
   const [uncalled,setUncalled]=React.useState([]);
   const csvFileToArray = string => {
-		console.log(string)
 		const csvHeader = string.slice(0, string.indexOf("\n")).split(",");
 		const csvRows = string.split("\n");
 		const array = csvRows.map(i => {
@@ -35,9 +36,9 @@ function DownloadComponent() {
     });
      setUncalled(uncalledArray)
      exportCsv([uncalledArray],"noAnswer")
+
   }
   function exportCsv(data,fileName){
-    console.log(data)
     const urlD = window.URL.createObjectURL(new Blob(data));
     const link = document.createElement('a');
     link.href = urlD;
@@ -88,7 +89,7 @@ function DownloadComponent() {
   }
   return (
     <Grid container spacing={2}>
-      <Grid item xs={4.5} md={4.5}>
+      <Grid item xs={3} md={3}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DateTimePicker
             label='Inicio'
@@ -102,7 +103,7 @@ function DownloadComponent() {
           />
         </LocalizationProvider>
       </Grid>
-      <Grid item xs={4.5} md={4.5}>
+      <Grid item xs={3} md={3}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DateTimePicker
             label='final'
@@ -116,7 +117,9 @@ function DownloadComponent() {
           />
         </LocalizationProvider>
       </Grid>
-      <Grid item xs={3} md={3} ><Button variant="contained" color="success" onClick={downloadCsv} fullWidth>Descargar csv</Button> </Grid>
+      <Grid item xs={3} md={3} ><Button variant="contained"  onClick={downloadCsv} fullWidth>Descargar csv</Button> 
+      </Grid>
+      <Grid item xs={3} md={3} ><Button  onClick={() => SmsService.sender(message)} color="success" fullWidth variant="contained" >Enviar mensaje</Button></Grid>
     </Grid>
   )
 } export default DownloadComponent;

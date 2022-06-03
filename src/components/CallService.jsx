@@ -11,6 +11,7 @@ import { useMediaQuery, Container, Button, Grid, List, ListItemText, Typography,
 import { v4 as uuidv4 } from 'uuid';
 import DownloadComponent from "./DownloadService";
 
+
 var callers=[]
 var callersLength = []
 var stop
@@ -26,7 +27,8 @@ function DragArea() {
     reader.onerror = () => console.log("file reading failed");
     reader.onload = () => {
       csv.parse(reader.result, (err, data) => {
-        sessionStorage.setItem("nums", data) //Se guarda en la sesion el archivo cargado.
+        sessionStorage.setItem("nums", JSON.stringify(data)) //Se guarda en la sesion el archivo cargado.
+        console.log(data)
         console.log("Parsed CSV data: ", data.length); //Imprime en consola el tamaño del array de numeros parseados
         callers = data; //La variable callers es declarada e inicializada con el valor de data, es decir la data cargada 
         setData(callers);//Actualizamos el estado data del componente con el valor de callers
